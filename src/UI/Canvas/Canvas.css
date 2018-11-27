@@ -1,0 +1,8 @@
+Canvas{
+    display: fixed;
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    border: 50px solid #dddddd;
+  
+}

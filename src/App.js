@@ -1,5 +1,6 @@
 import React,{ Component} from 'react';
 import './App.css';
+import Layout from '../src/Layout/layout'
 
 class App extends Component{
 
@@ -8,7 +9,7 @@ class App extends Component{
         this.funStartHandeller = this.funStartHandeller.bind(this);
         this.funMoveHandeller = this.funMoveHandeller.bind(this);
         this.funEndHeandeller = this.funEndHeandeller.bind(this);
-        this.handLineHandeller = this.handLineHandeller.bind(this);
+        this.pencilHandeller = this.pencilHandeller.bind(this);
         this.ActivationFuncHandeller = this.ActivationFuncHandeller.bind(this);
     }
 
@@ -23,7 +24,7 @@ class App extends Component{
 
     componentDidMount(){
         this.canvas= document.getElementById("myCanvas");
-        this.ctx = this.canvas.getContext("2d");
+        // this.ctx = this.canvas.getContext("2d");
     }
 
     ActivationFuncHandeller = (event) => {
@@ -41,28 +42,28 @@ class App extends Component{
         }
         if(this.state.task === "HandLine")
         {
-            return this.handLineHandeller(event);
+            return this.pencilHandeller(event);
         }
     }
 
-    handLineHandeller(event)
+    pencilHandeller(event)
 	{
-		this.setState({start_point: this.state.end_point});
-		this.setState({end_point: {X: event.clientX,Y: event.clientY}});
-		this.ctx.beginPath();
-		this.ctx.moveTo(this.state.start_point.X,this.state.start_point.Y);
-		this.ctx.lineTo(this.state.end_point.X,this.state.end_point.Y);
-		this.ctx.stroke();
-		this.setState({current_state : this.ctx.getImageData(0,0,500,500)});
+		// this.setState({start_point: this.state.end_point});
+		// this.setState({end_point: {X: event.clientX,Y: event.clientY}});
+		// this.ctx.beginPath();
+		// this.ctx.moveTo(this.state.start_point.X,this.state.start_point.Y);
+		// this.ctx.lineTo(this.state.end_point.X,this.state.end_point.Y);
+		// this.ctx.stroke();
+		// this.setState({current_state : this.ctx.getImageData(0,0,500,500)});
     }
         
-    clearCanvasHandeller = () => {
-        this.setState(
-            this.state.current_state = this.state.one_state_back,  
-            this.ctx.clearRect(0,0,500,500),
-            this.ctx.putImageData(this.state.current_state,0,0));
+    // clearCanvasHandeller = () => {
+    //     this.setState(
+    //         this.state.current_state = this.state.one_state_back,  
+    //         this.ctx.clearRect(0,0,500,500),
+    //         this.ctx.putImageData(this.state.current_state,0,0));
 
-    }
+    // }
 
     
     currentEventHandeller = (tsk) => {
@@ -71,24 +72,24 @@ class App extends Component{
 
     funStartHandeller = (event) => {
         this.setState({
-            one_step_back : this.ctx.getImageData(0,0,500,500),
-            mouseDown : true,
-            start_point:{X:event.clientX,Y:event.clientY},
-            end_point:{X:event.clientX,Y:event.clientY}});
-        this.ActivationFuncHandeller(event);
-    }
+        //     one_step_back : this.ctx.getImageData(0,0,500,500),
+        //     mouseDown : true,
+        //     start_point:{X:event.clientX,Y:event.clientY},
+        //     end_point:{X:event.clientX,Y:event.clientY}});
+        // this.ActivationFuncHandeller(event);
+    })}
 
     funMoveHandeller = (event) => {
-        if(this.state.mouseDown)
-        {
-            this.ActivationFuncHandeller(event);
-        }
+        // if(this.state.mouseDown)
+        // {
+        //     this.ActivationFuncHandeller(event);
+        // }
     }
 
     funEndHeandeller = (event) => {
-        this.ActivationFuncHandeller(event);
-        this.setState({mouseDown : false});
-        this.clearCanvasHandeller();
+        // this.ActivationFuncHandeller(event);
+        // this.setState({mouseDown : false});
+        // this.clearCanvasHandeller();
     }
 
 
@@ -96,21 +97,23 @@ class App extends Component{
 
 
     return(
-            <div>
-                <button onClick= {() => this.currentEventHandeller("Line")}> Line</button>
-                <button onClick= {() => this.currentEventHandeller("Circle")}> Circle</button>
-                <button onClick= {() => this.currentEventHandeller("Erase")}> Erase</button>
-                <button onClick= {() => this.currentEventHandeller("HandLine")}> Handline</button>
-                <div>
-                <canvas id ="myCanvas" className ="DrawingArea" 
-                    onMouseDown= { this.funStartHandeller} 
-                    onMouseMove = { this.funMoveHandeller} 
-                    onMouseUp= { this.funEndHeandeller} > </canvas>
-                </div>  
-            </div>
+        <Layout/>
         );
     }
 
 }
 
 export default App;
+
+{/* <div>
+<button onClick= {() => this.currentEventHandeller("Line")}> Line</button>
+<button onClick= {() => this.currentEventHandeller("Circle")}> Circle</button>
+<button onClick= {() => this.currentEventHandeller("Erase")}> Erase</button>
+<button onClick= {() => this.currentEventHandeller("HandLine")}> Handline</button>
+<div>
+<canvas id ="myCanvas" className ="DrawingArea" 
+    onMouseDown= { this.funStartHandeller()} 
+    onMouseMove = { this.funMoveHandeller} 
+    onMouseUp= { this.funEndHeandeller} > </canvas>
+</div>  
+</div> */}
