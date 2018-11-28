@@ -1,8 +1,9 @@
 Canvas{
     display: fixed;
-    box-sizing: border-box;
-    width: 500px;
-    height: 500px;
-    border: 50px solid #dddddd;
-  
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 70px solid #dddddd;
+    overflow: scroll;
 }

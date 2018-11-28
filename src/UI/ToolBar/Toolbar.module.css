@@ -1,0 +1,30 @@
+.toolbar{
+    position : fixed;
+    height: 60px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0px 20px;
+    background-color: rgba(100,100,100,1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 5px rgba(0,0,0,0.7);
+    z-index: 100;
+}
+
+.toolbar div{
+    height: 100%
+}
+
+.Tools{
+    display: flex;
+    flex-flow: row;
+}
+
+/* .DrawerToggle :hover{
+    background-color: rgb(0, 204, 255);
+    height:110%;
+    width:60px;
+} */
